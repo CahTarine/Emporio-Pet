@@ -2,6 +2,7 @@ package petshop;
 
 import java.util.Scanner;
 import petshop.model.PetShop;
+import petshop.model.NovoCadastro;
 import petshop.util.Cores;
 
 public class Menu {
@@ -11,19 +12,20 @@ public class Menu {
 		
 		int opcao;
 		
+		/*PetShop conta1 = new PetShop("Ana");
+		
+		conta1.setTitular("Camille");
+		
+		conta1.setCadastros("julie");
+		conta1.setHorarios("03/04 - 14:30");
+		conta1.depositar(30);
+		conta1.comprar(20);
+		conta1.visualizar();*/
+		
+		NovoCadastro cad1 = new NovoCadastro("gato", 3, 2, "Marrie");
+		cad1.visualizar();
+		
 		while (true) {
-			
-			PetShop conta1 = new PetShop("Ana");
-			
-			conta1.setTitular("Camille");
-			
-			conta1.setCadastros("julie");
-			conta1.setHorarios("03/04 - 14:30");
-			conta1.depositar(30);
-			conta1.comprar(20);
-			conta1.visualizar();
-			
-			
 			
 			System.out.println(Cores.TEXT_GREEN + Cores.ANSI_BLACK_BACKGROUND + 
 					"*****************************************************");
