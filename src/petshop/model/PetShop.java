@@ -2,19 +2,24 @@ package petshop.model;
 
 import petshop.util.Cores;
 
-public class PetShop {
+public abstract class PetShop {
 	private String titular;
-	private String cadastros;
-	private String horarios;
+	private int numero;
+	private float data;
+	private float hora;
 	private float saldo;
+	private boolean adotar;
 	
 	
-	public PetShop(String titular) {
+	public PetShop(String titular, int numero, float data, float hora, float saldo) {
 		this.titular = titular;
-		this.cadastros = cadastros;
-		this.horarios = horarios;
+		this.numero = numero;
+		this.data = data;
+		this.hora = hora;
 		this.saldo = saldo;
+		this.adotar = adotar;
 	}
+
 
 
 	public String getTitular() {
@@ -22,29 +27,69 @@ public class PetShop {
 	}
 
 
+
+
+
+
 	public void setTitular(String titular) {
 		this.titular = titular;
 	}
 
 
-	public String getCadastros() {
-		return cadastros;
+
+
+	public int getNumero() {
+		return numero;
 	}
 
 
-	public void setCadastros(String cadastros) {
-		this.cadastros = cadastros;
+
+
+
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
 
-	public String getHorarios() {
-		return horarios;
+
+
+
+
+	public float getData() {
+		return data;
 	}
 
 
-	public void setHorarios(String horarios) {
-		this.horarios = horarios;
+
+
+
+
+	public void setData(float data) {
+		this.data = data;
 	}
+
+
+
+
+
+
+	public float getHora() {
+		return hora;
+	}
+
+
+
+
+
+
+	public void setHora(float hora) {
+		this.hora = hora;
+	}
+
+
+
+
 
 
 	public float getSaldo() {
@@ -52,37 +97,44 @@ public class PetShop {
 	}
 
 
+
+
+
+
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
-	
-	public void depositar(float valor) {
-		this.setSaldo(this.getSaldo()+valor);
+
+
+
+
+
+
+	public boolean isAdotar() {
+		return adotar;
 	}
-	
-	public boolean comprar(float valor) {
-		if (this.getSaldo() > 10) {
-			this.setSaldo(this.getSaldo() - valor);
-			System.out.println("Compra efetuada com sucesso. \nEspero que seu Pet goste!!");
-			return true;
-		} else {
-			System.out.println("Saldo insuficiente!");
-			return false;
-		}
+
+
+
+
+
+
+	public void setAdotar(boolean adotar) {
+		this.adotar = adotar;
 	}
+
 	
+	
+	public void depositar (float valor) {
+		this.setSaldo(this.getSaldo() + valor);
+	}
+
+
+
+
+
 	public void visualizar() {
-		if (getCadastros().isEmpty()) {
-			System.out.println("Voce nao tem pets cadastrados!");
-		} else {
-			System.out.println(getCadastros());
-		}
-		
-		if (getHorarios().isEmpty()) {
-			System.out.println("Voce nao tem nenhum horário marcado atualmente.");
-		} else {
-			System.out.println(getHorarios());
-		}
+	
 		
 		System.out.println(Cores.TEXT_GREEN_BOLD + 
 				"\n\n***********************************************************" + Cores.TEXT_RESET);
@@ -90,8 +142,9 @@ public class PetShop {
 		System.out.println(Cores.TEXT_GREEN_BOLD + 
 				"***********************************************************" + Cores.TEXT_RESET);
 		System.out.println("Titular: " + this.titular);
-		System.out.println("Cadastros: " + this.cadastros);
-		System.out.println("Horários Marcados: " + this.horarios);
+		System.out.println("Número da Conta: " + this.numero);
+		System.out.println("Data marcada: " + this.data);
+		System.out.println("Hora marcada: " + this.hora);
 		System.out.println("Saldo: " + this.saldo);
 	}
 	
