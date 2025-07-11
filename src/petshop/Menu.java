@@ -1,29 +1,34 @@
 package petshop;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-import petshop.model.PetShop;
-import petshop.model.NovoCadastro;
+
+import petshop.controller.PetShopController;
+import petshop.model.PetDomestico;
+import petshop.model.PetSilvestre;
 import petshop.util.Cores;
 
 public class Menu {
 
 	public static void main(String[] args) {
+		
+		PetShopController cadastros = new PetShopController();
+		
 		Scanner lerScanner = new Scanner(System.in);
 		
-		int opcao;
+		int opcao, porte, tipo;
+		String titular, nomePet, animal;
+		float data, hora, saldo;
 		
-		/*PetShop conta1 = new PetShop("Ana");
 		
-		conta1.setTitular("Camille");
+		PetDomestico pd1 = new PetDomestico("bia", 124, 24.01f, 13.00f, 30, "julie", 1);
+		pd1.visualizar();
 		
-		conta1.setCadastros("julie");
-		conta1.setHorarios("03/04 - 14:30");
-		conta1.depositar(30);
-		conta1.comprar(20);
-		conta1.visualizar();*/
+		PetSilvestre ps1 = new PetSilvestre("cah", 125, 23.01f, 14.30f, 60, "coruja");
+		ps1.visualizar();
 		
-		NovoCadastro cad1 = new NovoCadastro("gato", 3, 2, "Marrie");
-		cad1.visualizar();
+		
 		
 		while (true) {
 			
@@ -34,23 +39,28 @@ public class Menu {
 			System.out.println("                                                     ");
 			System.out.println("*****************************************************");
 			System.out.println("                                                     "); 
-			System.out.println("            1 - Criar Conta                          ");
-			System.out.println("            2 - Novo Cadastro                        ");
-			System.out.println("            3 - Listar Cadastros                     ");
-			System.out.println("            4 - Reservar Horário                     ");
-			System.out.println("            5 - Cancelar Horário                     ");
-			System.out.println("            6 - Créditos                             ");
-			System.out.println("            7 - Loja                                 ");
-			System.out.println("            8 - Adotar                               ");
-			System.out.println("            9 - Sair                                 ");
+			System.out.println("            1 - Novo Cadastro                        ");
+			System.out.println("            2 - Listar Cadastros                     ");
+			System.out.println("            3 - Reservar Horário                     ");
+			System.out.println("            4 - Cancelar Horário                     ");
+			System.out.println("            5 - Créditos                             ");
+			System.out.println("            6 - Loja                                 ");
+			System.out.println("            7 - Adotar                               ");
+			System.out.println("            8 - Sair                                 ");
 			System.out.println("                                                     ");
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                          ");
 			System.out.println("                                                     " + Cores.TEXT_RESET);
 			
+			try {
 			opcao = lerScanner.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("\nDigite valores inteiros!");
+				lerScanner.nextLine();
+				opcao = 0;
+			}
 			
-			if (opcao == 9) {
+			if (opcao == 8) {
 				System.out.println(Cores.TEXT_GREEN + "Foi um prazer atende-lo, até a próxima!");
 				sobre();
 				lerScanner.close();
@@ -59,39 +69,112 @@ public class Menu {
 			
 			switch (opcao) {
 			case 1:
-				System.out.println("Criar conta");
+				System.out.println("Novo Cadastro");
+				
+				/*System.out.println("Digite o nome do titular: ");
+				lerScanner.skip("\\R?");
+				titular = lerScanner.nextLine();
+				
+				System.out.println("data");
+				data = lerScanner.nextFloat();
+				
+				System.out.println("hora");
+				hora = lerScanner.nextFloat();
+				
+				
+				
+				do {
+					System.out.println("tipo da conta");
+					tipo = lerScanner.nextInt();
+					
+				} while ( tipo < 1 && tipo > 2);
+				
+				System.out.println("saldo");
+				saldo=lerScanner.nextFloat();
+				
+				
+
+				switch (tipo) {
+					case 1 -> {
+					
+						System.out.println("porte");
+						porte = lerScanner.nextInt();
+						
+						lerScanner.nextLine();
+						System.out.println("nome pet");
+						nomePet = lerScanner.nextLine();
+						
+						cadastros.cadastrar(new PetDomestico(titular, cadastros.gerarNumero(), data, hora, saldo, nomePet, porte));
+						
+					}
+					
+					case 2 -> {
+						
+						lerScanner.nextLine();
+
+						System.out.println("animal");
+						animal = lerScanner.nextLine();
+						
+						cadastros.cadastrar(new PetSilvestre(titular, cadastros.gerarNumero(), data, hora, saldo, animal));
+						
+					}
+				}*/
+				
+				
+				
+				
+				
+				
+				keyPress();
 				break;
 				
 			case 2:
-				System.out.println("Novo Cadastro");
+				System.out.println("Listar Cadastros");
+				cadastros.listarTodos();
+				
+				keyPress();
 				break;
 				
 			case 3:
-				System.out.println("Listar Cadastros");
+				System.out.println("Reservar Horário");
+				keyPress();
+				
 				break;
 				
 			case 4:
-				System.out.println("Reservar Horário");
+				System.out.println("Cancelar Horário");
+				keyPress();
+				
 				break;
 				
 			case 5:
-				System.out.println("Cancelar Horário");
+				System.out.println("Créditos");
+				keyPress();
+				
 				break;
 				
 			case 6:
-				System.out.println("Créditos");
+				System.out.println("Loja");
+				keyPress();
+				
 				break;
 				
 			case 7:
-				System.out.println("Loja");
+				System.out.println("Adotar");
+				keyPress();
+				
 				break;
 				
 			case 8:
-				System.out.println("Adotar");
+				System.out.println("Sair");
+				keyPress();
 				break;
 				
 				default:
-					System.out.println("Opcao inválida");
+					System.out.println(Cores.TEXT_RED_BOLD + "Opcao inválida" + Cores.TEXT_RESET);
+					keyPress();
+					
+					break;
 			}
 		}
 	}
@@ -102,6 +185,15 @@ public class Menu {
 		System.out.println("Camille Tarine - camille.tarine.estagio@gmail.com");
 		System.out.println("https://github.com/CahTarine");
 		System.out.println("*********************************************************");
+	}
+	
+	public static void keyPress() {
+		try {
+			System.out.println(Cores.TEXT_RESET + "\n\n Pressione Enter para continuar.");
+			System.in.read();
+		} catch (IOException e) {
+			System.out.println("Você pressionou uma tecla diferente de Enter!");
+		}
 	}
 
 }
